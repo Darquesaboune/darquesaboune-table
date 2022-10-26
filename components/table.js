@@ -4,44 +4,97 @@ import Link from "next/link";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const fetchData = (url) => {
-    const { data, error, isValidating } = useSWR(url, fetcher);
-  
-    return {
-      data: data,
-      isLoading: isValidating,
-      isError: error,
-    };
+  const { data, error, isValidating } = useSWR(url, fetcher);
+
+  return {
+    data: data,
+    isLoading: isValidating,
+    isError: error,
   };
+};
 
 function LevelHeader({ symbol, level, numCharts }) {
-    return (
-        <tr className="bg-red-900 border-b dark:bg-gray-800 dark:border-gray-700">
-        <td
-          scope="row"
-          colSpan="8"
-          className="text-center py-2 font-medium text-gray-900 font-bold text-white whitespace-nowrap"
-        >
-          {symbol}{level} ({numCharts}譜面)
-        </td>
-      </tr>
-    )
+  return (
+    <tr className="bg-red-900 border-b dark:bg-gray-800 dark:border-gray-700">
+      <td
+        scope="row"
+        colSpan="8"
+        className="text-center py-2 font-medium text-gray-900 font-bold text-[color:white] whitespace-nowrap"
+      >
+        {symbol}
+        {level} ({numCharts}譜面)
+      </td>
+    </tr>
+  );
 }
 
 function ScoreEntry() {
-    
+  return (
+    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+      <th
+        scope="row"
+        className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
+      >
+        kf1
+      </th>
+      <td className="px-6 py-4">
+        <Link
+          href="#"
+          className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+        >
+          Link
+        </Link>
+      </td>
+      <td className="px-6 py-4">
+        <Link
+          href="#"
+          className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+        >
+          Link
+        </Link>
+      </td>
+      <td className="px-6 py-4">
+        <Link
+          href="#"
+          className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+        >
+          Link
+        </Link>
+      </td>
+      <td className="px-6 py-4">Better Off Alone</td>
+      <td className="px-6 py-4">Alice Deejay</td>
+      <td className="px-6 py-4">Included</td>
+      <td className="px-6 py-4">
+        Do you think you&apos;re better off alone...
+      </td>
+    </tr>
+  );
 }
 
 function TableData() {
-    const fetchHeader = fetchData("/header.json");
-    const fetchScores = fetchData("/score.json");
-    if (fetchScores.isLoading || fetchHeader.isLoading) return <tr className="bg-white"><td scope="row" colSpan="8" className="py-2"><Spinner /></td></tr>;
-    if (fetchScores.isError || fetchHeader.isError) return <tr>Error loading data</tr>;
-  
-    const header = fetchHeader.data
-    const scores = fetchScores.data
-  
-    return <LevelHeader symbol="kf" level="1" numCharts={3} />;
-  }
+  const fetchHeader = fetchData("/header.json");
+  const fetchScores = fetchData("/score.json");
+  if (fetchScores.isLoading || fetchHeader.isLoading)
+    return (
+      <tr className="bg-white">
+        <td scope="row" colSpan="8" className="py-2">
+          <Spinner />
+        </td>
+      </tr>
+    );
+  if (fetchScores.isError || fetchHeader.isError)
+    return <tr>Error loading data</tr>;
+
+  const header = fetchHeader.data;
+  const scores = fetchScores.data;
+
+  return (
+    <>
+        <LevelHeader symbol="kf" level="1" numCharts={3} />
+        <ScoreEntry />
+    </>
+  );
+}
 
 function Spinner() {
   return (
@@ -70,7 +123,6 @@ function Spinner() {
 export default function BmsTable() {
   return (
     <div className="relative overflow-x-auto sm:rounded-lg mx-24">
-        
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
@@ -102,44 +154,6 @@ export default function BmsTable() {
         </thead>
         <tbody>
           <TableData />
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <th
-              scope="row"
-              className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-            >
-              kf1
-            </th>
-            <td className="px-6 py-4">
-              <Link
-                href="#"
-                className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-              >
-                Link
-              </Link>
-            </td>
-            <td className="px-6 py-4">
-              <Link
-                href="#"
-                className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-              >
-                Link
-              </Link>
-            </td>
-            <td className="px-6 py-4">
-              <Link
-                href="#"
-                className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-              >
-                Link
-              </Link>
-            </td>
-            <td className="px-6 py-4">Better Off Alone</td>
-            <td className="px-6 py-4">Alice Deejay</td>
-            <td className="px-6 py-4">Included</td>
-            <td className="px-6 py-4">
-              Do you think you&apos;re better off alone...
-            </td>
-          </tr>
         </tbody>
       </table>
     </div>
