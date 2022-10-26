@@ -189,7 +189,7 @@ function TableData() {
 
 export default function BmsTable() {
   return (
-    <div className="relative overflow-x-auto sm:rounded-lg mx-24 mb-4">
+    <div className="relative overflow-x-auto md:rounded-lg md:mx-24 mb-4">
       <table className="w-full text-sm text-left text-gray-500">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50">
           <tr>
