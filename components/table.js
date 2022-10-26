@@ -73,7 +73,7 @@ function LevelHeader({ symbol, level, numCharts }) {
       <td
         scope="row"
         colSpan="8"
-        className="text-center py-2 font-medium text-gray-900 font-bold text-white whitespace-nowrap"
+        className="text-center py-2 font-medium font-bold text-white whitespace-nowrap"
       >
         {symbol}
         {level} ({numCharts}譜面)
@@ -144,8 +144,8 @@ function ScoreEntry({ data, symbol }) {
 }
 
 function TableData() {
-  const fetchHeader = useFetchData("/header.json");
-  const fetchScores = useFetchData("/score.json");
+  const fetchHeader = useFetchData("/table/header.json");
+  const fetchScores = useFetchData("/table/score.json");
   if (fetchScores.isLoading || fetchHeader.isLoading)
     return (
       <tr className="bg-white">
@@ -155,7 +155,13 @@ function TableData() {
       </tr>
     );
   if (fetchScores.isError || fetchHeader.isError)
-    return <tr>Error loading data</tr>;
+    return (
+      <tr className="bg-white">
+        <td scope="row" colSpan="8" className="text-center py-2">
+          Error loading data
+        </td>
+      </tr>
+    );
 
   const header = fetchHeader.data;
   let scores = fetchScores.data;
