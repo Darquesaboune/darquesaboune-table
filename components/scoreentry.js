@@ -20,7 +20,7 @@ export default function ScoreEntry({ data, symbol }) {
       <td className="px-6 py-4">
         {video ? (
           <a href={video} className="font-medium text-blue-600 hover:underline">
-            Link
+            Lien
           </a>
         ) : null}
       </td>
@@ -29,7 +29,7 @@ export default function ScoreEntry({ data, symbol }) {
           href={"http://www.ribbit.xyz/bms/score/view?p=1&md5=" + data.md5}
           className="font-medium text-blue-600 hover:underline"
         >
-          Link
+          Lien
         </a>
       </td>
       <td className="px-6 py-4">
