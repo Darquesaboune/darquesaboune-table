@@ -54,10 +54,10 @@ export default function ScoreEntry({ data, symbol }) {
             href={data.url_diff}
             className="font-medium text-blue-600 hover:underline"
           >
-            DL
+            Télécharger
           </a>
         ) : (
-          "同梱"
+          "Inclue"
         )}
       </td>
       <td className="px-6 py-4">{data.comment}</td>

@@ -7,28 +7,28 @@ export default function BmsTable() {
         <thead className="text-xs text-gray-700 uppercase bg-gray-50">
           <tr>
             <th scope="col" className="px-6 py-3">
-              Lv
+              Nv
             </th>
             <th scope="col" className="px-6 py-3">
-              動画
+              Vidéo
             </th>
             <th scope="col" className="px-6 py-3">
-              譜面
+              Partition
             </th>
             <th scope="col" className="px-6 py-3">
-              Mocha
+              Radar de rythme
             </th>
             <th scope="col" className="px-6 py-3">
-              タイトル
+              Titre
             </th>
             <th scope="col" className="px-6 py-3">
-              本体
+              Corps
             </th>
             <th scope="col" className="px-6 py-3">
-              差分
+              Différence
             </th>
             <th scope="col" className="px-6 py-3">
-              コメント
+              Commentaire
             </th>
           </tr>
         </thead>

@@ -7,7 +7,7 @@ export default function LevelHeader({ symbol, level, numCharts }) {
         className="text-center py-2 font-medium font-bold text-white whitespace-nowrap"
       >
         {symbol}
-        {level} ({numCharts}譜面)
+        {level} ({numCharts} partition{numCharts > 1 ? 's' : ''})
       </td>
     </tr>
   );
