@@ -1,4 +1,5 @@
 import { GrooveRadar } from "./radar";
+import { PlayCircleIcon } from "@heroicons/react/24/solid";
 import PopoverGraph from "./popover";
 
 export default function ScoreEntry({ data, symbol }) {
@@ -24,7 +25,7 @@ export default function ScoreEntry({ data, symbol }) {
             className="font-medium text-blue-600 hover:underline"
             target="_blank"
           >
-            Lien
+            <PlayCircleIcon className="w-6 h-6 flex justify-center items-center text-red-500 rounded" />
           </a>
         ) : null}
       </td>
