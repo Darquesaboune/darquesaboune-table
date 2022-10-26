@@ -13,21 +13,39 @@ const fetchData = (url) => {
     };
   };
 
+function LevelHeader({ symbol, level, numCharts }) {
+    return (
+        <tr className="bg-red-900 border-b dark:bg-gray-800 dark:border-gray-700">
+        <td
+          scope="row"
+          colSpan="8"
+          className="text-center py-2 font-medium text-gray-900 font-bold text-white whitespace-nowrap"
+        >
+          {symbol}{level} ({numCharts}譜面)
+        </td>
+      </tr>
+    )
+}
+
+function ScoreEntry() {
+    
+}
+
 function TableData() {
     const fetchHeader = fetchData("/header.json");
     const fetchScores = fetchData("/score.json");
-    if (fetchScores.isLoading || fetchHeader.isLoading) return <Spinner />;
-    if (fetchScores.isError || fetchHeader.isError) return <div>Error loading data</div>;
+    if (fetchScores.isLoading || fetchHeader.isLoading) return <tr className="bg-white"><td scope="row" colSpan="8" className="py-2"><Spinner /></td></tr>;
+    if (fetchScores.isError || fetchHeader.isError) return <tr>Error loading data</tr>;
   
     const header = fetchHeader.data
     const scores = fetchScores.data
   
-    return <div>{header.name}</div>;
+    return <LevelHeader symbol="kf" level="1" numCharts={3} />;
   }
 
 function Spinner() {
   return (
-    <div role="status">
+    <div role="status" className="flex justify-center items-center">
       <svg
         aria-hidden="true"
         className="mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
@@ -52,7 +70,7 @@ function Spinner() {
 export default function BmsTable() {
   return (
     <div className="relative overflow-x-auto sm:rounded-lg mx-24">
-        <TableData></TableData>
+        
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
@@ -83,15 +101,7 @@ export default function BmsTable() {
           </tr>
         </thead>
         <tbody>
-          <tr className="bg-red-900 border-b dark:bg-gray-800 dark:border-gray-700">
-            <td
-              scope="row"
-              colSpan="8"
-              className="text-center py-2 font-medium text-gray-900 font-bold text-white whitespace-nowrap"
-            >
-              ？？？1 (7譜面)
-            </td>
-          </tr>
+          <TableData />
           <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             <th
               scope="row"
