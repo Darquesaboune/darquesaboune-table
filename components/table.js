@@ -25,7 +25,7 @@ export default function BmsTable() {
               Corps
             </th>
             <th scope="col" className="px-6 py-3">
-              Différence
+              Saboune
             </th>
             <th scope="col" className="px-6 py-3">
               Commentaire

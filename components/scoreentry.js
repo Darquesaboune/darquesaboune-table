@@ -33,7 +33,7 @@ export default function ScoreEntry({ data, symbol }) {
         </a>
       </td>
       <td className="px-6 py-4">
-        <PopoverGraph content={<GrooveRadar values={[4, 9, 3, 5, 6]} />} />
+        <PopoverGraph content={<GrooveRadar values={data.radar} />} />
       </td>
       <td className="px-6 py-4">
         <a

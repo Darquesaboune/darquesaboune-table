@@ -22,7 +22,7 @@ export function GrooveRadar({ values }) {
     datasets: [
       {
         label: "Level",
-        data: values,
+        data: values && values.length === 5 ? values : [0, 0, 0, 0, 0],
         backgroundColor: "rgba(255, 99, 132, 0.2)",
         borderColor: "rgba(255, 99, 132, 1)",
         borderWidth: 1,
