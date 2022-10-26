@@ -19,7 +19,11 @@ export default function ScoreEntry({ data, symbol }) {
       </th>
       <td className="px-6 py-4">
         {video ? (
-          <a href={video} className="font-medium text-blue-600 hover:underline">
+          <a
+            href={video}
+            className="font-medium text-blue-600 hover:underline"
+            target="_blank"
+          >
             Lien
           </a>
         ) : null}
@@ -28,6 +32,7 @@ export default function ScoreEntry({ data, symbol }) {
         <a
           href={"http://www.ribbit.xyz/bms/score/view?p=1&md5=" + data.md5}
           className="font-medium text-blue-600 hover:underline"
+          target="_blank"
         >
           Lien
         </a>
@@ -41,18 +46,22 @@ export default function ScoreEntry({ data, symbol }) {
             "http://www.dream-pro.info/~lavalse/LR2IR/search.cgi?mode=ranking&bmsmd5=" +
             data.md5
           }
+          target="_blank"
         >
           {data.title}
         </a>
       </td>
       <td className="px-6 py-4">
-        <a href={data.url}>{data.artist}</a>
+        <a href={data.url} target="_blank">
+          {data.artist}
+        </a>
       </td>
       <td className="px-6 py-4">
         {data.url_diff ? (
           <a
             href={data.url_diff}
             className="font-medium text-blue-600 hover:underline"
+            target="_blank"
           >
             Télécharger
           </a>
