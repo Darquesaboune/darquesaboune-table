@@ -97,10 +97,7 @@ function ScoreEntry({ data, symbol }) {
       </th>
       <td className="px-6 py-4">
         {video ? (
-          <a
-            href={video}
-            className="font-medium text-blue-600 hover:underline"
-          >
+          <a href={video} className="font-medium text-blue-600 hover:underline">
             Link
           </a>
         ) : null}
@@ -135,7 +132,14 @@ function ScoreEntry({ data, symbol }) {
         <a href={data.url}>{data.artist}</a>
       </td>
       <td className="px-6 py-4">
-        <a href={data.url_diff}>{data.url_diff}</a>
+        {data.url_diff ? (
+          <a
+            href={data.url_diff}
+            className="font-medium text-blue-600 hover:underline"
+          >
+            DL
+          </a>
+        ) : "同梱"}
       </td>
       <td className="px-6 py-4">{data.comment}</td>
     </tr>
