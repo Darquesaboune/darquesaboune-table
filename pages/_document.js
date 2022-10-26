@@ -10,7 +10,7 @@ export default function Document() {
         <meta name="bmstable" content="header.json" />
       </Head>
         <body className="bg-black">
-          <div className="bg-opacity">
+          <div className="bg-opacity md:pb-4">
             <Main />
             <NextScript />
           </div>
