@@ -1,5 +1,4 @@
 import useSWR from "swr";
-import Link from "next/link";
 import Spinner from "./spinner";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -98,45 +97,45 @@ function ScoreEntry({ data, symbol }) {
       </th>
       <td className="px-6 py-4">
         {video ? (
-          <Link
+          <a
             href={video}
             className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
           >
             Link
-          </Link>
+          </a>
         ) : null}
       </td>
       <td className="px-6 py-4">
-        <Link
+        <a
           href={"http://www.ribbit.xyz/bms/score/view?p=1&md5=" + data.md5}
           className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
         >
           Link
-        </Link>
+        </a>
       </td>
       <td className="px-6 py-4">
-        <Link
+        <a
           href={"https://mocha-repository.info/song.php?sha256=" + data.sha256}
           className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
         >
           Link
-        </Link>
+        </a>
       </td>
       <td className="px-6 py-4">
-        <Link
+        <a
           href={
             "http://www.dream-pro.info/~lavalse/LR2IR/search.cgi?mode=ranking&bmsmd5=" +
             data.md5
           }
         >
           {data.title}
-        </Link>
+        </a>
       </td>
       <td className="px-6 py-4">
-        <Link href={data.url}>{data.artist}</Link>
+        <a href={data.url}>{data.artist}</a>
       </td>
       <td className="px-6 py-4">
-        <Link href={data.url_diff}>{data.url_diff}</Link>
+        <a href={data.url_diff}>{data.url_diff}</a>
       </td>
       <td className="px-6 py-4">{data.comment}</td>
     </tr>
