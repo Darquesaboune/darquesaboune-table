@@ -10,4 +10,5 @@ body {
 .bg-opacity {
     background-color:rgba(0, 0, 0, 0.8);
     background-origin: border-box;
+    min-height: 100vh;
 }
