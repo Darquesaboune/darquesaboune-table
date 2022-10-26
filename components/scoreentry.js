@@ -24,6 +24,7 @@ export default function ScoreEntry({ data, symbol }) {
             href={video}
             className="font-medium text-blue-600 hover:underline"
             target="_blank"
+            rel="noreferrer"
           >
             <PlayCircleIcon className="w-6 h-6 flex justify-center items-center text-red-500 rounded" />
           </a>
@@ -34,6 +35,7 @@ export default function ScoreEntry({ data, symbol }) {
           href={"http://www.ribbit.xyz/bms/score/view?p=1&md5=" + data.md5}
           className="font-medium text-blue-600 hover:underline"
           target="_blank"
+          rel="noreferrer"
         >
           Lien
         </a>
@@ -48,12 +50,13 @@ export default function ScoreEntry({ data, symbol }) {
             data.md5
           }
           target="_blank"
+          rel="noreferrer"
         >
           {data.title}
         </a>
       </td>
       <td className="px-6 py-4">
-        <a href={data.url} target="_blank">
+        <a href={data.url} target="_blank" rel="noreferrer">
           {data.artist}
         </a>
       </td>
@@ -63,6 +66,7 @@ export default function ScoreEntry({ data, symbol }) {
             href={data.url_diff}
             className="font-medium text-blue-600 hover:underline"
             target="_blank"
+            rel="noreferrer"
           >
             Télécharger
           </a>
