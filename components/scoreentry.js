@@ -1,3 +1,5 @@
+import { GrooveRadar } from "./radar";
+
 export default function ScoreEntry({ data, symbol }) {
   const video = data.video1
     ? "http://www.nicovideo.jp/watch/sm" + data.video1
@@ -30,12 +32,7 @@ export default function ScoreEntry({ data, symbol }) {
         </a>
       </td>
       <td className="px-6 py-4">
-        <a
-          href={"https://mocha-repository.info/song.php?sha256=" + data.sha256}
-          className="font-medium text-blue-600 hover:underline"
-        >
-          Link
-        </a>
+        <GrooveRadar values={[4, 9, 3, 5, 6]} />
       </td>
       <td className="px-6 py-4">
         <a
