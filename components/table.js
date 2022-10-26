@@ -68,7 +68,7 @@ const sortScores = (order, info) => {
 
 function LevelHeader({ symbol, level, numCharts }) {
   return (
-    <tr className="bg-red-900 border-b dark:bg-gray-800 dark:border-gray-700">
+    <tr className="bg-red-900 border-b">
       <td
         scope="row"
         colSpan="8"
@@ -88,10 +88,10 @@ function ScoreEntry({ data, symbol }) {
     data.video3 ? "http://vimeo.com/" + data.video3                :
             null ;
   return (
-    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+    <tr className="bg-white border-b hover:bg-gray-50">
       <th
         scope="row"
-        className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
+        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
       >
         {symbol + data.level}
       </th>
@@ -99,7 +99,7 @@ function ScoreEntry({ data, symbol }) {
         {video ? (
           <a
             href={video}
-            className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            className="font-medium text-blue-600 hover:underline"
           >
             Link
           </a>
@@ -108,7 +108,7 @@ function ScoreEntry({ data, symbol }) {
       <td className="px-6 py-4">
         <a
           href={"http://www.ribbit.xyz/bms/score/view?p=1&md5=" + data.md5}
-          className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+          className="font-medium text-blue-600 hover:underline"
         >
           Link
         </a>
@@ -116,7 +116,7 @@ function ScoreEntry({ data, symbol }) {
       <td className="px-6 py-4">
         <a
           href={"https://mocha-repository.info/song.php?sha256=" + data.sha256}
-          className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+          className="font-medium text-blue-600 hover:underline"
         >
           Link
         </a>
@@ -190,8 +190,8 @@ function TableData() {
 export default function BmsTable() {
   return (
     <div className="relative overflow-x-auto sm:rounded-lg mx-24 mb-4">
-      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <table className="w-full text-sm text-left text-gray-500">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50">
           <tr>
             <th scope="col" className="px-6 py-3">
               Lv
