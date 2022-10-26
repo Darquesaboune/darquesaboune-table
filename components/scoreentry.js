@@ -1,4 +1,5 @@
 import { GrooveRadar } from "./radar";
+import PopoverGraph from "./popover";
 
 export default function ScoreEntry({ data, symbol }) {
   const video = data.video1
@@ -32,7 +33,7 @@ export default function ScoreEntry({ data, symbol }) {
         </a>
       </td>
       <td className="px-6 py-4">
-        <GrooveRadar values={[4, 9, 3, 5, 6]} />
+        <PopoverGraph content={<GrooveRadar values={[4, 9, 3, 5, 6]} />} />
       </td>
       <td className="px-6 py-4">
         <a
