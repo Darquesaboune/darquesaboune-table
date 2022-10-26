@@ -4,7 +4,7 @@ import Spinner from "./spinner";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-const fetchData = (url) => {
+const useFetchData = (url) => {
   const { data, error, isValidating } = useSWR(url, fetcher);
 
   return {
@@ -46,7 +46,6 @@ const sortScores = (order, info) => {
 
     info.forEach((e) => delete e["_index"]);
   } else {
-    // そうでない場合はレベル順->タイトル順にソート
     info.sort(function (a, b) {
       var aLv = a["level"].toString();
       var bLv = b["level"].toString();
@@ -74,7 +73,7 @@ function LevelHeader({ symbol, level, numCharts }) {
       <td
         scope="row"
         colSpan="8"
-        className="text-center py-2 font-medium text-gray-900 font-bold text-[color:white] whitespace-nowrap"
+        className="text-center py-2 font-medium text-gray-900 font-bold text-white whitespace-nowrap"
       >
         {symbol}
         {level} ({numCharts}譜面)
@@ -84,6 +83,11 @@ function LevelHeader({ symbol, level, numCharts }) {
 }
 
 function ScoreEntry({ data, symbol }) {
+  const video =
+    data.video1 ? "http://www.nicovideo.jp/watch/sm" + data.video1 :
+    data.video2 ? "http://www.youtube.com/watch?v=" + data.video2  :
+    data.video3 ? "http://vimeo.com/" + data.video3                :
+            null ;
   return (
     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
       <th
@@ -93,12 +97,14 @@ function ScoreEntry({ data, symbol }) {
         {symbol + data.level}
       </th>
       <td className="px-6 py-4">
-        <Link
-          href="#"
-          className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-        >
-          Link
-        </Link>
+        {video ? (
+          <Link
+            href={video}
+            className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+          >
+            Link
+          </Link>
+        ) : null}
       </td>
       <td className="px-6 py-4">
         <Link
@@ -138,8 +144,8 @@ function ScoreEntry({ data, symbol }) {
 }
 
 function TableData() {
-  const fetchHeader = fetchData("/header.json");
-  const fetchScores = fetchData("/score.json");
+  const fetchHeader = useFetchData("/header.json");
+  const fetchScores = useFetchData("/score.json");
   if (fetchScores.isLoading || fetchHeader.isLoading)
     return (
       <tr className="bg-white">
