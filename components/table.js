@@ -15,14 +15,14 @@ const fetchData = (url) => {
 };
 
 const groupByLevel = (scores) => {
-    return scores.reduce(
-        (acc, score) => ({
-          ...acc,
-          [score.level]: [...(acc[score.level] ?? []), score],
-        }),
-        {},
-      );
-}
+  return scores.reduce(
+    (acc, score) => ({
+      ...acc,
+      [score.level]: [...(acc[score.level] ?? []), score],
+    }),
+    {}
+  );
+};
 
 const sortScores = (order, info) => {
   // mostly copypasted from original code because zzzz (with additional optimizations)
@@ -102,7 +102,7 @@ function ScoreEntry({ data, symbol }) {
       </td>
       <td className="px-6 py-4">
         <Link
-          href="#"
+          href={"http://www.ribbit.xyz/bms/score/view?p=1&md5=" + data.md5}
           className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
         >
           Link
@@ -110,18 +110,29 @@ function ScoreEntry({ data, symbol }) {
       </td>
       <td className="px-6 py-4">
         <Link
-          href="#"
+          href={"https://mocha-repository.info/song.php?sha256=" + data.sha256}
           className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
         >
           Link
         </Link>
       </td>
-      <td className="px-6 py-4">{data.title}</td>
-      <td className="px-6 py-4"><Link href={data.url}>{data.artist}</Link></td>
-      <td className="px-6 py-4"><Link href={data.url_diff}>{data.url_diff}</Link></td>
       <td className="px-6 py-4">
-      {data.comment}
+        <Link
+          href={
+            "http://www.dream-pro.info/~lavalse/LR2IR/search.cgi?mode=ranking&bmsmd5=" +
+            data.md5
+          }
+        >
+          {data.title}
+        </Link>
       </td>
+      <td className="px-6 py-4">
+        <Link href={data.url}>{data.artist}</Link>
+      </td>
+      <td className="px-6 py-4">
+        <Link href={data.url_diff}>{data.url_diff}</Link>
+      </td>
+      <td className="px-6 py-4">{data.comment}</td>
     </tr>
   );
 }
@@ -145,17 +156,24 @@ function TableData() {
   scores = sortScores(header.level_order, scores);
   const subgroups = groupByLevel(scores);
 
-  let data = []
+  let data = [];
   for (const [key, scores] of Object.entries(subgroups)) {
-    data.push(<LevelHeader symbol={header.symbol} level={key} numCharts={scores.length} key={key} />)
+    data.push(
+      <LevelHeader
+        symbol={header.symbol}
+        level={key}
+        numCharts={scores.length}
+        key={key}
+      />
+    );
     for (const score of scores) {
-        data.push(<ScoreEntry data={score} symbol={header.symbol} key={key + score.md5} />)
+      data.push(
+        <ScoreEntry data={score} symbol={header.symbol} key={key + score.md5} />
+      );
     }
   }
 
-  return (
-    <>{data}</>
-  );
+  return <>{data}</>;
 }
 
 export default function BmsTable() {
