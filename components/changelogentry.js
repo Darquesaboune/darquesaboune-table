@@ -8,9 +8,9 @@ export default function ChangelogEntry({ date, title, description }) {
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
         {title}
       </h3>
-      <p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
-        {description.map(l => <p>{l}</p>)}
-      </p>
+      <div className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+        {description.map(l => <p key={Math.random()}>{l}</p>)}
+      </div>
     </li>
   );
 }
