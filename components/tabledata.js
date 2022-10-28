@@ -1,21 +1,7 @@
-import useSWR from "swr";
+import useFetchData from "../utils/fetchdata"
 import Spinner from "./spinner";
 import LevelHeader from "./levelheader";
 import ScoreEntry from "./scoreentry";
-
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
-
-const useFetchData = (url) => {
-  const { data, error, isValidating } = useSWR(url, fetcher, {
-    revalidateOnFocus: false,
-  });
-
-  return {
-    data: data,
-    isLoading: isValidating,
-    isError: error,
-  };
-};
 
 const groupByLevel = (scores) => {
   return scores.reduce(
