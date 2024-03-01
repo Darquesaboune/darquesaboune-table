@@ -201,5 +201,15 @@
         "comment": "",
         "md5": "54160009387f441e7288ec86100f3151",
         "radar": [8, 5, 3, 0, 5]
+    },
+    {
+        "title": "Bad Boy",
+        "artist": "Cascada",
+        "level": "0",
+        "url": "http://drive.google.com/file/d/1UGWGuyKEGHdiKQUGPEt8NbQLor9zvEEi/view",
+        "url_diff": "",
+        "comment": "",
+        "md5": "e4374fea4b0b0581c9af33fd87c619c7",
+        "radar": [2, 1, 6, 0, 2]
     }
 ]
